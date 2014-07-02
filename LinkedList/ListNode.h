@@ -33,5 +33,5 @@ void deleteList(ListNode* head)
 void printList(ListNode* head)
 {
     for(ListNode* n = head; n; n = n->next)
-        std::cout<<"-->"<<n->val;
+        std::cout<<" -> "<<n->val;
 }

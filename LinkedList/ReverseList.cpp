@@ -11,14 +11,11 @@ public:
         while(head) {
             next = head->next;
             head->next = previous;
-            
-            if (!next) break;
-            
             previous = head;
             head = next;
         }
         
-        return head;
+        return previous;
     }
 };
 
