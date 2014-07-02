@@ -1,6 +1,3 @@
-#include <iostream>
-#include "ListNode.h"
-
 /**
 * Given a linked list, write a function to reverse every alternate k nodes 
 * (where k is an input to the function) in an efficient way.
@@ -10,7 +7,10 @@
 * Output:   3->2->1->4->5->6->9->8->7->NULL. 
 *
 **/
-  
+
+#include <iostream>
+#include "ListNode.h"
+
 using namespace std;
 
 class Solution {
