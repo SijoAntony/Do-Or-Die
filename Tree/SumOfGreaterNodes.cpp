@@ -5,14 +5,14 @@
 *    Examples:
 *    
 *    Input: Root of following BST
-*                  5
-*                /   \
-*               2     13
+*                 5
+*                / \
+*               2  13
 *    
 *    Output: The given BST is converted to following Binary Tree
-*                  18
-*                /   \
-*              20     13
+*                 18
+*                /  \
+*              20    13
 *              
 **/
 
