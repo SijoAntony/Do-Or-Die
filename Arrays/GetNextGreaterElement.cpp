@@ -20,11 +20,9 @@ public:
     void getNextGreaterElements(int A[], int size, int *result) {
         stack<int> numberStack;
         for (int i = 0; i < size; i++) {
-            if (!numberStack.empty() && A[numberStack.top()] < A[i]) {
-                while (!numberStack.empty() && A[numberStack.top()] < A[i]) {
-                    result[numberStack.top()] = A[i];
-                    numberStack.pop();
-                }
+            while (!numberStack.empty() && A[numberStack.top()] < A[i]) {
+                result[numberStack.top()] = A[i];
+                numberStack.pop();
             }
             numberStack.push(i);
         }
