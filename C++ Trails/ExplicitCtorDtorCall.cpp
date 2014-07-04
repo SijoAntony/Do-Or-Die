@@ -1,19 +1,27 @@
+/**
+*
+*   Calling Ctor and Dtor of a class explicitly.
+*
+**/
+
 #include <iostream>
+
 using namespace std;
  
-class Test
-{
+class Test {
 public:
     Test()  { cout << "Constructor is executed\n"; }
     Test(const Test& t)  { cout << "Copy Constructor is executed\n"; }    
     ~Test() { cout << "Destructor is executed\n";  }
     friend void fun(Test t);
 };
+
 void fun(Test t)
 {
     Test();
     t.~Test();
 }
+
 int main()
 {
     Test();     //Calls temporary Ctor-Dtor
