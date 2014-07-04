@@ -1,5 +1,11 @@
 /**
+*   Examples:
 *
+*         1
+*       /   \
+*      2     3
+*     / \   / \
+*    4   5 6   7
 **/
 
 #include <iostream>
@@ -13,7 +19,7 @@ public:
 
 int main()
 {
-    string str = "5 3 2 1 # # # 4 # # 7 6 # # 8 # #";
+    string str = "1 2 4 # # 5 # # 3 6 # # 7 # #";
     
     TreeNode* root = buildTree(str);
     Solution sl;
