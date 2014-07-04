@@ -22,6 +22,11 @@ bool getNextToken(std::stringstream &ss, int &token, bool &isNumber)
 
     while((c = ss.get()) == ' ');
     
+    if (c == '-') {
+       str += c;
+       c = ss.get();
+    }
+    
     while (c >= '0' && c <= '9') {
         str += c;
         c = ss.get();
