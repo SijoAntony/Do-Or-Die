@@ -31,7 +31,7 @@ public:
         if (!root)
             return;
             
-        if (root->left || root->right)
+        if (!isLeaf(root))
             cout<<root->val<<" ";
         
         root->left ? printLeftEdge(root->left) : printLeftEdge(root->right);
@@ -41,7 +41,7 @@ public:
         if (!root)
             return;
 
-        if (!root->left && !root->right)
+        if (isLeaf(root))
             cout<<root->val<<" ";
 
         printLeaves(root->left);
@@ -54,7 +54,7 @@ public:
 
         root->right ? printRightEdge(root->right) : printRightEdge(root->left);        
 
-        if (root->left || root->right)
+        if (!isLeaf(root))
             cout<<root->val<<" ";
 
     }

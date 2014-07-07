@@ -106,3 +106,10 @@ void treePostorder(TreeNode* root)
     treePostorder(root->right);
     std::cout<<root->val<<" ";
 }
+
+bool isLeaf(TreeNode* root) 
+{
+    if (root && (!root->left && !root->right))
+        return true;
+    return false;
+}
