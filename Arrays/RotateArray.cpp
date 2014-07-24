@@ -32,6 +32,8 @@ void rotateArray(int A[], int size, int k)
 }
 
 
+
+// Second and efficient solution
 void reverse(int A[], int start, int end)
 {
     while (start < end) {
