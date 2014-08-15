@@ -1,4 +1,5 @@
 #include <iostream>
+#include <mutex> //works only in C++11
 
 using namespace std;
 
@@ -7,7 +8,10 @@ public:
     static Printer* getInstance() {
         if (!m_instance) {
             //Handle thread safetly
-            m_instance = new Printer();
+            m_locker.lock();
+            if (!m_instance)
+                m_instance = new Printer();
+            m_locker.unlock();
         }
         
         return m_instance;
@@ -33,7 +37,7 @@ private:
         if (this != &other) {
         }    
     }
-    
+    static mutex m_locker;
     static Printer* m_instance;
 };
 
