@@ -90,13 +90,15 @@ public:
         return m_colors[type]->clone();
     }
     
-    void addProtoType(Color::Type type, Color* c) {
+    static void addProtoType(Color::Type type, Color* c) {
         m_colors[type] = c;
     }    
     
 private:
-    map<Color::Type, Color*> m_colors;
+    static map<Color::Type, Color*> m_colors;
 };
+
+map<Color::Type, Color*> ColorManager::m_colors;
     
 int main()
 {
