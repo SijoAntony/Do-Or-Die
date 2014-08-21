@@ -17,6 +17,19 @@ public:
         
         return previous;
     }
+    
+    ListNode* reverseRec(ListNode* head) {
+        if (!head)
+            return head;
+        if (!head->next)
+            return head;
+        
+        ListNode* rest = head->next;
+        ListNode* newHead = reverseRec(rest);
+        head->next->next = head;
+        head->next = NULL;
+        return newHead;
+    }
 };
 
 int main()
@@ -28,6 +41,7 @@ int main()
     ListNode* list = buildList(A,  size);
     cout<<"Before :"; printList(list);
     list = sl.reverse(list);
+    list = sl.reverseRec(list);
     cout<<"\nAfter :"; printList(list);
 
     deleteList(list);
