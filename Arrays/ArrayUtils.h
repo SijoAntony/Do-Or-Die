@@ -5,6 +5,7 @@ void printArray(int A[], int size)
 {
     for(int i = 0; i < size; i++)
         std::cout<<A[i] << " ";
+    std::cout<<std::endl;
 }
 
 //Awesome way to print 2D arrays using templates
@@ -16,7 +17,7 @@ void printMatrix(T (&A)[rows][cols]) {
         std::cout<<std::endl;
     }
 }
-
+/*
 template<class T, size_t rows, size_t cols>
 vector<vector<T> > arrayToVector(T (&A)[rows][cols])
 {
@@ -30,8 +31,9 @@ vector<vector<T> > arrayToVector(T (&A)[rows][cols])
     }    
     return matrix;
 }
+
 template<class T>
-void printMatrix(const vector<vector<T>>& matrix) {
+void printMatrix(const vector<vector<T> >& matrix) {
     if (matrix.empty())
         return;
         
@@ -43,3 +45,4 @@ void printMatrix(const vector<vector<T>>& matrix) {
         std::cout<<std::endl;
     }
 }
+*/
