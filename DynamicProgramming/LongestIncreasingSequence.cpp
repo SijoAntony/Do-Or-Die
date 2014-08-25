@@ -31,6 +31,16 @@ int ceilIndex(vector<int>& v, int low, int high, int key)
     return high;
 }
 
+int ceilIndex(int A[], vector<int>& v, int low, int high, int key)
+{
+    while(high - low > 1) {
+        int mid = low + (high - low) / 2;
+        (A[v[mid]] >= key ? high : low) = mid;        
+    }
+    return high;
+}
+
+
 int longestIncreasingSequenceEx(int A[], int size)
 {
     vector<int> lis(size, 0);
@@ -52,9 +62,36 @@ int longestIncreasingSequenceEx(int A[], int size)
     return maxlen;
 }
 
+int longestIncreasingSequenceExEx(int A[], int size)
+{
+    vector<int> lis(size, 0);
+    vector<int> prev(size, -1);
+    
+    int maxlen = 1;
+    lis[0] = 0;
+    prev[0] = -1;
+
+    for (int i = 1; i < size; i++) {
+        if (A[i] < A[lis[0]])
+            lis[0] = i;
+        else if (A[i] > A[lis[maxlen - 1]]) {
+            prev[i] = lis[maxlen - 1];
+            lis[maxlen++] = i;
+        }
+        else {
+            int index = ceilIndex(A, lis, 0, maxlen - 1, A[i]);
+            prev[i] = lis[index - 1];
+            lis[index] = i;
+        }
+    }
+    for (int i = lis[maxlen - 1]; i >=0; i = prev[i])
+        cout<<A[i]<<" ";
+    cout<<endl;
+    return maxlen;
+}
 int main()
 {
     int A[] = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
-    cout<<"Length of longest increasing sequence: "<<longestIncreasingSequenceEx(A, sizeof(A) / sizeof(int))<<endl;
+    cout<<"Length of longest increasing sequence: "<<longestIncreasingSequenceExEx(A, sizeof(A) / sizeof(int))<<endl;
     return 0;    
 }
