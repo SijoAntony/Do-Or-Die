@@ -24,6 +24,8 @@
 **/
 
 #include <iostream>
+#include <set>
+#include <vector>
 #include "TreeNode.h"
 
 using namespace std;
@@ -74,6 +76,31 @@ public:
         }
         return -1;
     }
+    
+    void printNodesAtKDistanceFromLeaf(TreeNode *root, int k, vector<int>& ancestors, set<int> &nodes) {
+        if (!root)
+            return;
+
+        if (isLeaf(root) && ancestors.size() >= k) {
+            nodes.insert(ancestors[ancestors.size() - k]);
+        }
+        
+        ancestors.push_back(root->val);
+        printNodesAtKDistanceFromLeaf(root->left, k, ancestors, nodes);
+        printNodesAtKDistanceFromLeaf(root->right, k, ancestors, nodes);
+        ancestors.pop_back();
+    }
+    
+    void printNodesAtKDistanceFromLeaf(TreeNode *root, int k) {
+        if (!root)
+            return;
+        vector<int> ancestors;
+        set<int> nodes;
+        printNodesAtKDistanceFromLeaf(root, k, ancestors, nodes);
+        
+        for (set<int>::iterator it = nodes.begin();  it != nodes.end(); it++)
+            cout<<*it<<" ";
+    }
 };
 
 int main()
@@ -82,7 +109,8 @@ int main()
     
     TreeNode* root = buildTree(str);
     Solution sl;
-    sl.printNodesAtKDistance(root, 14, 3);
+    //sl.printNodesAtKDistance(root, 14, 3);
+    sl.printNodesAtKDistanceFromLeaf(root, 1);
     deleteTree(root);
     
     return 0;
