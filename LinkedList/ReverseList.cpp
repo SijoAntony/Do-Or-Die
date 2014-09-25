@@ -30,6 +30,17 @@ public:
         head->next = NULL;
         return newHead;
     }
+    
+    ListNode* reverseEx(ListNode *head) {
+        ListNode *dummy = new ListNode(-1);
+        while (head) {
+            ListNode *next = head->next;
+            head->next = dummy->next;
+            dummy->next = head;
+            head = next;
+        }
+        return dummy->next;
+    }
 };
 
 int main()
@@ -40,8 +51,8 @@ int main()
 
     ListNode* list = buildList(A,  size);
     cout<<"Before :"; printList(list);
-    list = sl.reverse(list);
-    list = sl.reverseRec(list);
+    list = sl.reverseEx(list);
+    //list = sl.reverseRec(list);
     cout<<"\nAfter :"; printList(list);
 
     deleteList(list);
