@@ -143,30 +143,6 @@ void iterativePreorder(TreeNode *root)
     }
 }
 
-void interativeInorder(TreeNode *root)
-{
-    while (root) {
-        if (!root->left) {
-            cout<<root->val<<" ";
-            root = root->right;
-        } else {
-            TreeNode *current = root->left;
-            while (current->right && current->right != root)
-                current = current->right;
-            
-            if (!current->right) {
-                current->right = root;
-                root = root->left;
-            } else {
-                cout<<root->val<<" ";
-                current->right = NULL;
-                root = root->right;
-            }
-        }
-    }
-    
-}
-
 int main()
 {
     string strOne = "8 2 1 # # 3 # # 10 9 # # 11 # #";
@@ -176,11 +152,9 @@ int main()
     TreeNode* one = buildTree(strOne);
     TreeNode* two = buildTree(strTwo);
     
-    //Solution sl;
-    //vector<int> result = sl.mergeTwoBSTsInASCOrder(one, two);
-    //printArray(result);
-
-    interativeInorder(one);
+    Solution sl;
+    vector<int> result = sl.mergeTwoBSTsInASCOrder(one, two);
+    printArray(result);
 
     deleteTree(one);
     deleteTree(two);
